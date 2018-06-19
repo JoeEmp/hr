@@ -174,31 +174,27 @@ void ChrDlg::OnBnClickedButtonLogin()
 	EndDialog(0);	
 	UpdateData(TRUE);
 	
-	if (m_UserName == "")
-		{
-			
+	if (m_UserName == ""){
 			CString title("错误");
 			CString error("账号不能为空 ");
 			MessageBox(error, title, MB_OK);
 			ChrDlg dlg;
 			dlg.DoModal();
 		}
-		else
-		{
-		if (m_Passkey == "")
-				{
+		else{
+			if (m_Passkey == ""){
 					CString title("错误");
 					CString error(" 密码不能为空 ");
 					MessageBox(error, title, MB_OK);
 					ChrDlg dlg;
 					dlg.DoModal();
-				}else{	
-					
+			}
+			else{	
 					CString result = db.Verify(m_UserName, m_Passkey); //函数返回 101 账号错误 102 密码错误  
-																		//111 进入管理员界面 100 ceo界面 200 经理界面 300 员工界面
+																										//111 进入管理员界面 100 ceo界面 200 经理界面 300 员工界面
 					SaveUserName = m_UserName;
-						if (result == "101")
-						{   //101错误是账号错误 
+						if (result == "101"){   
+							//101错误是账号错误 
 							CString title("账号错误");
 							CString error("请检查账号 是否为纯数字或者账号位数");
 							MessageBox(error, title, MB_OK);
